@@ -1,26 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialData = {
-  loading: false,
-};
-
 const AlertsSlice = createSlice({
   name: "Alerts",
-  initialData,
+  initialState: {
+    loading: false,
+  },
   reducers: {
-    Alert: (state, action) => {
-      switch (action.type) {
-        case "LOADING": {
-          return {
-            ...state,
-            loading: action.payload,
-          };
-        }
-        default:
-          return state;
-      }
+    setLoading: (state, action) => {
+      state.loading = action.payload;
     },
   },
 });
 
+export const { setLoading } = AlertsSlice.actions;
 export default AlertsSlice.reducer;
